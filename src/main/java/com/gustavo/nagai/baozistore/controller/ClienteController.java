@@ -6,6 +6,7 @@ import com.gustavo.nagai.baozistore.dto.ClienteResponseDTO;
 import com.gustavo.nagai.baozistore.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class ClienteController {
 
     @Operation(summary = "Cadastrar um cliente")
     @PostMapping
-    public ResponseEntity<ClienteResponseDTO> createNewCliente(@RequestBody ClienteCreateDTO clienteRequest) {
+    public ResponseEntity<ClienteResponseDTO> createNewCliente(@Valid @RequestBody ClienteCreateDTO clienteRequest) {
 
         ClienteResponseDTO novoCliente = clienteService.createNewCliente(clienteRequest);
 

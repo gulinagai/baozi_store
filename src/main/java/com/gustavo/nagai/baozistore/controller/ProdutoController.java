@@ -5,6 +5,7 @@ import com.gustavo.nagai.baozistore.dto.ProdutoResponseDTO;
 import com.gustavo.nagai.baozistore.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,7 +39,7 @@ public class ProdutoController {
 
     @Operation(summary = "Cadastrar um produto")
     @PostMapping
-    public ResponseEntity<ProdutoResponseDTO> createNewProduto(@RequestBody ProdutoCreateDTO produtoRequest) {
+    public ResponseEntity<ProdutoResponseDTO> createNewProduto(@Valid @RequestBody ProdutoCreateDTO produtoRequest) {
 
         ProdutoResponseDTO novoProduto = produtoService.createNewProduto(produtoRequest);
 

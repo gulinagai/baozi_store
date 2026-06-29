@@ -6,6 +6,7 @@ import com.gustavo.nagai.baozistore.dto.PedidoResponseDTO;
 import com.gustavo.nagai.baozistore.service.PedidoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class PedidoController {
 
     @Operation(summary = "Cadastrar um pedido")
     @PostMapping
-    public ResponseEntity<PedidoResponseDTO> createNewPedido(@RequestBody PedidoCreateDTO pedidoRequest) {
+    public ResponseEntity<PedidoResponseDTO> createNewPedido(@Valid @RequestBody PedidoCreateDTO pedidoRequest) {
 
         PedidoResponseDTO novoPedido = pedidoService.createNewPedido(pedidoRequest);
 
